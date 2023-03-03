@@ -1,0 +1,46 @@
+<h2>BERITA TERKINI</h2>
+<div style="width:800px" class="mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource">
+
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Judul </th>
+            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="keterangan">
+            <th mat-header-cell *matHeaderCellDef> Berita </th>
+            <td mat-cell *matCellDef="let element"> {{element.keterangan}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef> image</th>
+            <td mat-cell *matCellDef="let element"> {{element.image}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="kategori">
+            <th mat-header-cell *matHeaderCellDef> Kategori Berita </th>
+            <td mat-cell *matCellDef="let element"> {{element.kategori}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button color="primary" (click)="FunctionUpdate(element.userid)">Edit</button> |
+                <button mat-raised-button color="accent" (click)="FunctionDelete(element.userid)">Delete</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[3,5, 10, 25, 100]" aria-label="Select page">
+    </mat-paginator>
+</div>
